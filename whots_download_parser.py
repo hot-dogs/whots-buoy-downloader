@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import argparse
-from abc import ABC
+import roman
 from urllib.request import urlopen
 
 
@@ -11,9 +11,7 @@ class WhotsFileDownloader:
     """
 
     def __init__(self, whots_number, system_number):
-        self.whots_number = whots_number
-        self.system_number = system_number
-        # self.read_file = None
+        self.whots_number, self.system_number, self.content, self.read_file = whots_number, system_number, None, None
 
     def parse_args():
         """
@@ -44,11 +42,16 @@ class WhotsFileDownloader:
 
     def get_whots_system(self):
         if self.system_number == 1:
-            self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XVII_MET_sys1.txt"
+            self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
+                           str(roman.toRoman(self.whots_number)) +\
+                           "_MET_sys1.txt "
 
         elif self.system_number == 2:
-            self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XVII_MET_sys2.txt"
+            self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
+                           str(roman.toRoman(self.whots_number)) +\
+                           "_MET_sys2.txt "
 
+        print(self.content)
         return self.content
 
     def read_whots_sys(self):
@@ -57,14 +60,27 @@ class WhotsFileDownloader:
         return self.read_file
 
     def save_whots_sys(self):
-        with open("sys" + str(self.system_number) + ".txt", 'w') as output:
+        with open("WHOTS-"+
+                  str(roman.toRoman(self.whots_number)) +
+                  "_MET_sys"+ str(self.system_number) +
+                  ".txt", 'w') as output:
             output.write(self.read_file)
+
+        print("Saving ... " + "WHOTS-" +
+              str(roman.toRoman(self.whots_number)) +
+              "_MET_sys"+str(self.system_number)+".txt")
         return
 
 
 if __name__ == "__main__":
     args = WhotsFileDownloader.parse_args()
     download = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
-    print(download.get_whots_system())
+    download.get_whots_system()
     download.read_whots_sys()
     download.save_whots_sys()
+
+    # THIS ALSO WORKS
+    # args = WhotsFileDownloader(17, 1)
+    # print(args.get_whots_system())
+    # args.read_whots_sys()
+    # args.save_whots_sys()
