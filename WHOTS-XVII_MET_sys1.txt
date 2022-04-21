@@ -1,4 +1,4 @@
-% WHOTS-XVII sys1 SN19 RAW full 20-Apr-2022.
+% WHOTS-XVII sys1 SN19 RAW full 21-Apr-2022.
 % Winds to East and North, rotated 0.0000 degrees.
 % Time word is the time at the start of the averaging period.
 % year mo day  hr    yday     BPR   ATMP   STMP   WNDE   WNDN  WSPD  WDIR     RH   SRAD  LRAD   PRC  PRATE   SAL  COND  COMP
@@ -5836,3 +5836,4 @@
   2022  4  20  22 475.938 1021.59 23.094 24.348  -8.50  -3.27   9.1 249.0  78.59  610.9 415.4  0.81   0.00 34.82 5.215  64.1
   2022  4  21   0 476.021 1020.48 22.390 24.359  -7.37  -4.11   8.4 240.9  85.77  527.1 414.6  0.82   0.00 34.82 5.216  40.3
   2022  4  21   2 476.104 1019.74 22.760 24.343  -8.82  -2.96   9.3 251.4  82.44  376.5 401.2  0.82   0.00 34.81 5.213  84.9
+  2022  4  21   4 476.188 1020.17 23.528 24.329  -8.48  -2.85   8.9 251.4  76.58   35.6 417.2  0.82   0.00 34.80 5.211  75.2
