@@ -11,10 +11,7 @@ class WhotsFileDownloader:
     """
 
     def __init__(self, whots_number, system_number):
-        self.whots_number = whots_number
-        self.system_number = system_number
-        self.content = None
-        self.read_file = None
+        self.whots_number, self.system_number, self.content, self.read_file = whots_number, system_number, None, None
 
     def get_whots_system(self):
         # ----------------------------------------------------------------------------------- #
