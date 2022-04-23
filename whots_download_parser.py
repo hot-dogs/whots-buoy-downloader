@@ -9,14 +9,20 @@ def parse_args():
     """
       Parse input arguments
     """
-    parser = argparse.ArgumentParser(description=' Download WHOTS files')
+    parser = argparse.ArgumentParser(
+        description="""WHOTS FILE DOWNLOADER 
+        Example: If you want to download the raw system 1 from WHOTS 17, type:
+        
+        python3 whots_download_parser.py -w 17 -s 1""",
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
 
     parser.add_argument(
         "-w",
         type=int,
         nargs=1,
         dest="whots_number",
-        help="Type the WHOTS buoy number (eg. `17` for WHOTS-17)",
+        help="Type the WHOTS buoy NUMBER (eg. `17` for WHOTS-17)",
         action="store"
     )
 
@@ -25,7 +31,7 @@ def parse_args():
         type=int,
         nargs=1,
         dest="system_number",
-        help="WHOTS system number: ( 1 or 2 )",
+        help="WHOTS SYSTEM NUMBER: ( 1 or 2 )",
         action="store"
     )
 
