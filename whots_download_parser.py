@@ -47,7 +47,8 @@ def parse_args():
 class WhotsFileDownloader:
     """WHOTS File Downloader class.
 
-    WHOTS file downloader are the ones responsible for downloading the WHOTS text files and writing it to disk.
+    WHOTS file downloader is  responsible for downloading the WHOTS text files
+    and writing it to disk.
     """
 
     def __init__(self, whots_number, system_number):
