@@ -51,15 +51,9 @@ class WhotsFileDownloader:
         self.read_file = None
 
     def get_whots_system(self):
-        if self.system_number == 1:
-            self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
-                           str(roman.toRoman(self.whots_number)) + \
-                           "_MET_sys1.txt "
-
-        elif self.system_number == 2:
-            self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
-                           str(roman.toRoman(self.whots_number)) + \
-                           "_MET_sys2.txt "
+        self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
+                       str(roman.toRoman(self.whots_number)) + \
+                       "_MET_sys" + str(self.system_number) + ".txt "
 
         print(self.content)
         return self.content
@@ -88,9 +82,3 @@ if __name__ == "__main__":
     whots.get_whots_system()
     whots.read_whots_sys()
     whots.save_whots_sys()
-
-    # THIS ALSO WORKS
-    # args = WhotsFileDownloader(17, 1)
-    # print(args.get_whots_system())
-    # args.read_whots_sys()
-    # args.save_whots_sys()
