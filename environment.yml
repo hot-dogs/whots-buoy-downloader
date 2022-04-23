@@ -1,8 +1,8 @@
-name: /Users/fcp/workspace/1.git/5.whots/whots-buoy-download/.env
+name: whots-buoy-downloader
 channels:
   - conda-forge
   - defaults
 dependencies:
   - python=3.9
   - roman=3.3
-prefix: /Users/fcp/workspace/1.git/5.whots/whots-buoy-dow
+  - cookiecutter=1.7.3
