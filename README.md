@@ -5,3 +5,7 @@ WHOTS mooring
 
 ------------------------------------------------------
 
+## TODO. 
+1. add cookiecutter data/science
+2. create sphinx for this project
+3. move codes to src
