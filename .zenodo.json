@@ -1,0 +1,31 @@
+{
+  "title": "WHOTS Buoy Data Downloader",
+  "description": "A repository created to download and examine in-situ records from the WHOTS mooring",
+  "creators": [
+    {
+      "name": "Carvalho Pacheco, Fernando",
+      "affiliation": " University of Hawaiʻi at Mānoa - UH Manoa",
+      "orcid": "0000-0002-0376-5338"
+    }
+  ],
+  "contributors": [
+    {
+      "type": "ContactPerson",
+      "name": "Carvalho Pacheco, Fernando",
+      "affiliation": " University of Hawaiʻi at Mānoa - UH Manoa",
+      "orcid": "0000-0002-0376-5338"
+    },
+    {
+      "type": "Researcher",
+      "name": "Carvalho Pacheco, Fernando",
+      "affiliation": " University of Hawaiʻi at Mānoa - UH Manoa",
+      "orcid": "0000-0002-0376-5338"
+    },
+    {
+      "type": "Supervisor",
+      "name": "Carvalho Pacheco, Fernando",
+      "affiliation": " University of Hawaiʻi at Mānoa - UH Manoa",
+      "orcid": "0000-0002-0376-5338"
+    }
+  ]
+}
