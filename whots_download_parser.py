@@ -61,8 +61,10 @@ class WhotsFileDownloader:
                        str(roman.toRoman(self.whots_number)) + \
                        "_MET_sys" + str(self.system_number) + ".txt "
 
-        print(self.content)
         return self.content
+
+    def display_url(self):
+        print(self.content)
 
     def read_whots_sys(self):
         with urlopen(self.content) as download:
@@ -75,16 +77,19 @@ class WhotsFileDownloader:
                   "_MET_sys" + str(self.system_number) +
                   ".txt", 'w') as output:
             output.write(self.read_file)
+        return
 
+    def display_text_file(self):
         print("Saving ... " + "WHOTS-" +
               str(roman.toRoman(self.whots_number)) +
               "_MET_sys" + str(self.system_number) + ".txt")
-        return
 
 
 if __name__ == "__main__":
     args = parse_args()
     whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
     whots.get_whots_system()
+    whots.display_url()
     whots.read_whots_sys()
     whots.save_whots_sys()
+    whots.display_text_file()
