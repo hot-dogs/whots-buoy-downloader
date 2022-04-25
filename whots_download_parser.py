@@ -86,7 +86,7 @@ class WhotsFileDownloader:
               "_MET_sys" + str(self.system_number) + ".txt")
 
 
-if __name__ == "__main__":
+def main():
     args = parse_args()
     whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
     whots.get_url()
@@ -94,3 +94,7 @@ if __name__ == "__main__":
     whots.read_system_file()
     whots.save_system_file()
     whots.display_system_file()
+
+
+if __name__ == "__main__":
+    main()
