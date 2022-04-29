@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 import argparse
-import urllib.error
-
 import roman
 import sys
 from urllib.request import urlopen
-from urllib.error import HTTPError
 
 
 def parse_args():
