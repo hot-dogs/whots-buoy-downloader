@@ -55,7 +55,6 @@ class WhotsFileDownloader:
         self.whots_number = whots_number
         self.system_number = system_number
         self.content = None
-        self.read_file = None
 
     def __str__(self):
         self_str = (
@@ -79,16 +78,15 @@ class WhotsFileDownloader:
 
     def read_system_file(self):
         with urlopen(self.content) as download:
-            self.read_file = download.read().decode()
-            return self.read_file
+            return download.read().decode()
 
     def save_system_file(self):
         with open("WHOTS-" +
                   str(roman.toRoman(self.whots_number)) +
                   "_MET_sys" + str(self.system_number) +
                   ".txt", 'w') as output:
-            output.write(self.read_file)
-        return
+
+            return output.write(self.read_system_file())
 
     def display_system_file(self):
         print("Saving ... " + "WHOTS-" +
