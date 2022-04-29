@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 import argparse
+import urllib.error
+
 import roman
 import sys
 from urllib.request import urlopen
+from urllib.error import HTTPError
 
 
 def parse_args():
@@ -57,6 +60,16 @@ class WhotsFileDownloader:
         self.content = None
         self.read_file = None
 
+    def __str__(self):
+        self_str = (
+            f' WHOTS NUMBER :  {self.whots_number}\n'
+            f' SYSTEM NUMBER:  {self.system_number}'
+        )
+        return self_str
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.whots_number},{self.system_number})"
+
     def get_url(self):
         self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
                        str(roman.toRoman(self.whots_number)) + \
@@ -70,7 +83,7 @@ class WhotsFileDownloader:
     def read_system_file(self):
         with urlopen(self.content) as download:
             self.read_file = download.read().decode()
-        return self.read_file
+            return self.read_file
 
     def save_system_file(self):
         with open("WHOTS-" +
