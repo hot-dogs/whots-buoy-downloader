@@ -14,7 +14,7 @@ def parse_args():
         description="""WHOTS FILE DOWNLOADER 
         Example: If you want to download the raw system 1 from WHOTS 17, type:
         
-        python3 whots_downloader.py -w 17 -s 1""",
+        python3 make_whots_dataset.py -w 17 -s 1""",
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
