@@ -1,5 +1,7 @@
 # !/usr/bin/env python3
 import argparse
+import os
+
 import roman
 import sys
 from urllib.request import urlopen
@@ -75,7 +77,7 @@ class WhotsFileDownloader:
         return self.content
 
     def display_url(self):
-        print('-'*70)
+        print('-' * 70)
         print('Checking ... ' + self.content)
 
     def test_url(self):
@@ -98,12 +100,11 @@ class WhotsFileDownloader:
         with urlopen(self.content) as download:
             return download.read().decode()
 
-    def save_system_file(self):
-        with open("WHOTS-" +
-                  str(roman.toRoman(self.whots_number)) +
-                  "_MET_sys" + str(self.system_number) +
-                  ".txt", 'w') as output:
-
+    def save_file_at_dir(self):
+        with open(os.path.join('../../data/raw', "WHOTS-" +
+                                                 str(roman.toRoman(self.whots_number)) +
+                                                 "_MET_sys" + str(self.system_number) +
+                                                 ".txt"), 'w') as output:
             return output.write(self.read_system_file())
 
     def display_system_file(self):
@@ -113,16 +114,16 @@ class WhotsFileDownloader:
               "_MET_sys" + str(self.system_number) + ".txt")
 
 
-# def main():
-#     args = parse_args()
-#     whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
-#     whots.get_url()
-#     whots.display_url()
-#     whots.test_url()
-#     whots.read_system_file()
-#     whots.save_system_file()
-#     whots.display_system_file()
-#
-#
-# if __name__ == "__main__":
-#     main()
+def main():
+    args = parse_args()
+    whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
+    whots.get_url()
+    whots.display_url()
+    whots.test_url()
+    whots.read_system_file()
+    whots.save_file_at_dir()
+    whots.display_system_file()
+
+
+if __name__ == "__main__":
+    main()
