@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 import argparse
 import roman
 import sys
@@ -14,7 +14,7 @@ def parse_args():
         description="""WHOTS FILE DOWNLOADER 
         Example: If you want to download the raw system 1 from WHOTS 17, type:
         
-        python3 whots_download_parser.py -w 17 -s 1""",
+        python3 whots_downloader.py -w 17 -s 1""",
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
