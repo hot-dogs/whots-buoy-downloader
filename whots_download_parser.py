@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import roman
+import requests
 import sys
 from urllib.request import urlopen
 
@@ -69,12 +70,24 @@ class WhotsFileDownloader:
     def get_url(self):
         self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
                        str(roman.toRoman(self.whots_number)) + \
-                       "_MET_sys" + str(self.system_number) + ".txt "
+                       "_MET_sys" + str(self.system_number) + ".txt"
 
         return self.content
 
     def display_url(self):
-        print(self.content)
+        print('-'*70)
+        print('Checking ... ' + self.content)
+
+    def test_url(self):
+        res = requests.get(self.content)
+        try:
+            res.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            print('-' * 70)
+            sys.exit(f'WHOTS-{self.whots_number} SYSTEM-{self.system_number} is not available.\n'
+                     f'The error was: \n'
+                     f'              {e}')
+            print('-'*70)
 
     def read_system_file(self):
         with urlopen(self.content) as download:
@@ -89,6 +102,7 @@ class WhotsFileDownloader:
             return output.write(self.read_system_file())
 
     def display_system_file(self):
+        print('-' * 70)
         print("Saving ... " + "WHOTS-" +
               str(roman.toRoman(self.whots_number)) +
               "_MET_sys" + str(self.system_number) + ".txt")
@@ -99,6 +113,7 @@ def main():
     whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
     whots.get_url()
     whots.display_url()
+    whots.test_url()
     whots.read_system_file()
     whots.save_system_file()
     whots.display_system_file()
