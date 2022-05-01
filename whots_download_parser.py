@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import argparse
 import roman
-import requests
 import sys
 from urllib.request import urlopen
+from urllib.error import URLError, HTTPError
 
 
 def parse_args():
@@ -79,15 +79,20 @@ class WhotsFileDownloader:
         print('Checking ... ' + self.content)
 
     def test_url(self):
-        res = requests.get(self.content)
         try:
-            res.raise_for_status()
-        except requests.exceptions.HTTPError as e:
-            print('-' * 70)
+            urlopen(self.content)
+        except HTTPError as e:
             sys.exit(f'WHOTS-{self.whots_number} SYSTEM-{self.system_number} is not available.\n'
-                     f'The error was: \n'
-                     f'              {e}')
-            print('-'*70)
+                     f"{'-' * 70}\n"
+                     f"The Error code was: {e.code}\n"
+                     f"{'-' * 70}\n")
+
+        except URLError as e:
+            sys.exit(f'WHOTS-{self.whots_number} SYSTEM-{self.system_number} is not available.\n'
+                     f"{'-' * 70}\n"
+                     f"Failed to reach the serve:"
+                     f"Reason: {e.reason}"
+                     f"{'-' * 70}\n")
 
     def read_system_file(self):
         with urlopen(self.content) as download:
