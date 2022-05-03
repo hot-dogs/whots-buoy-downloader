@@ -1,50 +1,50 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 import argparse
 import os
-
 import roman
 import sys
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
+from whots_parse import get_args
 
 
-def parse_args():
-    """
-      Parse input arguments
-    """
-    parser = argparse.ArgumentParser(
-        description="""WHOTS FILE DOWNLOADER 
-        Example: If you want to download the raw system 1 from WHOTS 17, type:
-        
-        python3 make_whots_dataset.py -w 17 -s 1""",
-        formatter_class=argparse.RawDescriptionHelpFormatter
-    )
-
-    parser.add_argument(
-        "-w",
-        type=int,
-        nargs=1,
-        dest="whots_number",
-        help="Type the WHOTS buoy NUMBER (eg. `17` for WHOTS-17)",
-        action="store"
-    )
-
-    parser.add_argument(
-        "-s",
-        type=int,
-        nargs=1,
-        dest="system_number",
-        help="WHOTS SYSTEM NUMBER: ( 1 or 2 )",
-        action="store"
-    )
-
-    if len(sys.argv) <= 4:
-        parser.print_help()
-        sys.exit()
-    else:
-        args = parser.parse_args()
-
-    return args
+# def parse_args():
+#     """
+#       Parse input arguments
+#     """
+#     parser = argparse.ArgumentParser(
+#         description="""WHOTS FILE DOWNLOADER
+#         Example: If you want to download the raw system 1 from WHOTS 17, type:
+#
+#         python3 make_whots_dataset.py -w 17 -s 1""",
+#         formatter_class=argparse.RawDescriptionHelpFormatter
+#     )
+#
+#     parser.add_argument(
+#         "-w",
+#         type=int,
+#         nargs=1,
+#         dest="whots_number",
+#         help="Type the WHOTS buoy NUMBER (eg. `17` for WHOTS-17)",
+#         action="store"
+#     )
+#
+#     parser.add_argument(
+#         "-s",
+#         type=int,
+#         nargs=1,
+#         dest="system_number",
+#         help="WHOTS SYSTEM NUMBER: ( 1 or 2 )",
+#         action="store"
+#     )
+#
+#     if len(sys.argv) <= 4:
+#         parser.print_help()
+#         sys.exit()
+#     else:
+#         args = parser.parse_args()
+#
+#     return args
 
 
 class WhotsFileDownloader:
@@ -96,16 +96,16 @@ class WhotsFileDownloader:
                      f"Reason: {e.reason}"
                      f"{'-' * 70}\n")
 
-    def read_system_file(self):
+    def read_raw_file(self):
         with urlopen(self.content) as download:
             return download.read().decode()
 
-    def save_file_at_dir(self):
+    def save_raw_data(self):
         with open(os.path.join('../../data/raw', "WHOTS-" +
                                                  str(roman.toRoman(self.whots_number)) +
                                                  "_MET_sys" + str(self.system_number) +
                                                  ".txt"), 'w') as output:
-            return output.write(self.read_system_file())
+            return output.write(self.read_raw_file())
 
     def display_system_file(self):
         print('-' * 70)
@@ -115,13 +115,14 @@ class WhotsFileDownloader:
 
 
 def main():
-    args = parse_args()
+    #args = parse_args()
+    args = get_args()
     whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
     whots.get_url()
     whots.display_url()
     whots.test_url()
-    whots.read_system_file()
-    whots.save_file_at_dir()
+    whots.read_raw_file()
+    whots.save_raw_data()
     whots.display_system_file()
 
 
