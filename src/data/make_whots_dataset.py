@@ -1,50 +1,10 @@
 #!/usr/bin/env python3
-import argparse
 import os
 import roman
 import sys
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
-from whots_parse import get_args
-
-
-# def parse_args():
-#     """
-#       Parse input arguments
-#     """
-#     parser = argparse.ArgumentParser(
-#         description="""WHOTS FILE DOWNLOADER
-#         Example: If you want to download the raw system 1 from WHOTS 17, type:
-#
-#         python3 make_whots_dataset.py -w 17 -s 1""",
-#         formatter_class=argparse.RawDescriptionHelpFormatter
-#     )
-#
-#     parser.add_argument(
-#         "-w",
-#         type=int,
-#         nargs=1,
-#         dest="whots_number",
-#         help="Type the WHOTS buoy NUMBER (eg. `17` for WHOTS-17)",
-#         action="store"
-#     )
-#
-#     parser.add_argument(
-#         "-s",
-#         type=int,
-#         nargs=1,
-#         dest="system_number",
-#         help="WHOTS SYSTEM NUMBER: ( 1 or 2 )",
-#         action="store"
-#     )
-#
-#     if len(sys.argv) <= 4:
-#         parser.print_help()
-#         sys.exit()
-#     else:
-#         args = parser.parse_args()
-#
-#     return args
+from src.data.whots_parse import get_args
 
 
 class WhotsFileDownloader:
@@ -115,7 +75,6 @@ class WhotsFileDownloader:
 
 
 def main():
-    #args = parse_args()
     args = get_args()
     whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
     whots.get_url()
