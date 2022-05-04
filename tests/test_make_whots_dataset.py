@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 from subprocess import getstatusoutput, call
-from src.data.make_whots_dataset import WhotsFileDownloader
+from src.data.make_whots_dataset  import WhotsFileDownloader
 
 PRG = '../data/make_whots_dataset.py'
 
