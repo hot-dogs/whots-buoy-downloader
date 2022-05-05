@@ -5,4 +5,3 @@ channels:
 dependencies:
   - python=3.9
   - roman=3.3
-  - cookiecutter=1.7.3
