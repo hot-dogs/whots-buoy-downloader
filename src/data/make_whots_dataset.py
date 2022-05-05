@@ -3,10 +3,11 @@ import roman
 import sys
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
+
 from data.whots_parse import get_args
 
 
-class WhotsFileDownloader:
+class DefineWhotsSystem:
     """WHOTS File Downloader class.
 
     WHOTS file downloader is  responsible for downloading the WHOTS text files
@@ -28,16 +29,16 @@ class WhotsFileDownloader:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.whots_number},{self.system_number})"
 
-    def get_url(self):
+    def url(self):
+        """.url is a property that formats and returns the correct
+        WHOTS file.
+        """
         self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
                        str(roman.toRoman(self.whots_number)) + \
                        "_MET_sys" + str(self.system_number) + ".txt"
 
+        print('-' * 70 + '\nChecking ... ' + self.content)
         return self.content
-
-    def display_url(self):
-        print('-' * 70)
-        print('Checking ... ' + self.content)
 
     def test_url(self):
         try:
@@ -67,17 +68,15 @@ class WhotsFileDownloader:
             return output.write(self.read_raw_file())
 
     def display_system_file(self):
-        print('-' * 70)
-        print("Saving ... " + "WHOTS-" +
-              str(roman.toRoman(self.whots_number)) +
-              "_MET_sys" + str(self.system_number) + ".txt")
+        return print("-" * 70 + "\nSaving ... " + "WHOTS-" +
+                     str(roman.toRoman(self.whots_number)) +
+                     "_MET_sys" + str(self.system_number) + ".txt")
 
 
 def main():
     args = get_args()
-    whots = WhotsFileDownloader(args.whots_number[0], args.system_number[0])
-    whots.get_url()
-    whots.display_url()
+    whots = DefineWhotsSystem(args.whots_number[0], args.system_number[0])
+    whots.url()
     whots.test_url()
     whots.read_raw_file()
     whots.save_raw_data()
