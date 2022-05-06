@@ -1,22 +1,21 @@
 from subprocess import getstatusoutput, call
 import pytest
-import data.make_whots_dataset as mwd
 
 
-def test_construction():
+def test_construction_17(whots_17_1):
     """Test the class construction"""
-    whots_17_1 = mwd.DefineWhotsSystem(17, 1)
     assert whots_17_1.whots_number == 17
     assert whots_17_1.system_number == 1
 
-    whots_50_1 = mwd.DefineWhotsSystem(50, 1)
+
+def test_construction_50(whots_50_1):
     assert whots_50_1.whots_number == 50
     assert whots_50_1.system_number == 1
 
 
-def test_get_url():
+def test_get_url(whots_17_1):
     """Test get_url function"""
-    whots_17_1 = mwd.DefineWhotsSystem(17, 1)
+    # whots_17_1 = mwd.DefineWhotsSystem(17, 1)
     assert whots_17_1.url() == 'https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XVII_MET_sys1.txt'
 
 
