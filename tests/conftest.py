@@ -11,3 +11,4 @@ def whots_17_1() -> DefineWhotsSystem:
 @pytest.fixture
 def whots_50_1() -> DefineWhotsSystem:
     return DefineWhotsSystem(50, 1)
+
