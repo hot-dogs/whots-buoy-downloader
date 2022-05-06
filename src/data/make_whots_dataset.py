@@ -37,10 +37,10 @@ class DefineWhotsSystem:
                        str(roman.toRoman(self.whots_number)) + \
                        "_MET_sys" + str(self.system_number) + ".txt"
 
-        print('-' * 70 + '\nChecking ... ' + self.content)
         return self.content
 
     def test_url(self):
+        print('-' * 70 + '\n Checking ... ' + self.content)
         try:
             urlopen(self.content)
         except HTTPError as e:
