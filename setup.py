@@ -1,3 +1,7 @@
+"""
+Build and install the project.
+"""
+
 from setuptools import setup, find_packages
 
 setup(
