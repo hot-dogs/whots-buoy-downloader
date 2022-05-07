@@ -1,23 +1,35 @@
 from subprocess import getstatusoutput, call
 import pytest
+from data import DefineWhotsSystem
 
 
-def test_construction_17(whots_17_1):
+def test_construction_17(w17_1):
     """Test the class construction"""
-    assert whots_17_1.whots_number == 17
-    assert whots_17_1.system_number == 1
+    assert w17_1.whots_number == 17
+    assert w17_1.system_number == 1
 
 
-def test_construction_50(whots_50_1):
-    assert whots_50_1.whots_number == 50
-    assert whots_50_1.system_number == 1
+def test_construction_50():
+    w50_1 = DefineWhotsSystem(50, 1)
+    assert w50_1.whots_number == 50
+    assert w50_1.system_number == 1
 
 
-def test_get_url(whots_17_1):
+def test_whots_number():
+    w = DefineWhotsSystem
+    w.whots_number = 16
+    assert w.whots_number == 16
+
+
+def test_system_number():
+    w = DefineWhotsSystem
+    w.system_number = 1
+    assert w.system_number == 1
+
+
+def test_get_url(w17_1):
     """Test get_url function"""
-    assert whots_17_1.url() == 'https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XVII_MET_sys1.txt'
-
-
+    assert w17_1.url() == 'https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-XVII_MET_sys1.txt'
 
 # def test_test_url():
 #     assert WHOTS_17_1.test_url() ==
