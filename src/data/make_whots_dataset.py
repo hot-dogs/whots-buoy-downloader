@@ -90,7 +90,7 @@ class DefineWhotsSystem:
 
 def main():
     args = get_args()
-    whots = DefineWhotsSystem(args.__whots_number[0], args.__system_number[0])
+    whots = DefineWhotsSystem(args.whots_number[0], args.system_number[0])
     whots.url()
     whots.test_url()
     whots.read_raw_file()
