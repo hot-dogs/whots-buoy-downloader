@@ -9,6 +9,11 @@ def test_construction_17(w17_1):
     assert w17_1.system_number == 1
 
 
+def test_bad_constructor():
+    with pytest.raises(ValueError):
+        DefineWhotsSystem(16, 4)
+
+
 def test_construction_50():
     w50_1 = DefineWhotsSystem(50, 1)
     assert w50_1.whots_number == 50
