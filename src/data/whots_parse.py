@@ -29,7 +29,7 @@ def get_args():
 
     if len(sys.argv) <= 4:
         parser.print_help()
-        sys.exit()
+        #sys.exit()
     else:
         return parser.parse_args()
 
