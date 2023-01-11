@@ -12,6 +12,12 @@ class DefineWhotsSystem:
     WHOTS file downloader is  responsible for downloading the WHOTS text files
     and writing it to disk.
 
+    Parameters
+    ----------
+
+    Returns
+    -------
+
     """
 
     def __init__(self, whots_number, system_number):
@@ -49,6 +55,7 @@ class DefineWhotsSystem:
         Returns
         -------
 
+        
         """
         self._whots_number = value
 
@@ -69,6 +76,7 @@ class DefineWhotsSystem:
         Returns
         -------
 
+        
         """
         if value > 3:
             raise ValueError("System Number can't be greater than 3")
@@ -84,6 +92,7 @@ class DefineWhotsSystem:
         Returns
         -------
 
+        
         """
         self.content = "https://uop.whoi.edu/currentprojects/WHOTS/data/WHOTS-" + \
                        str(roman.toRoman(self.whots_number)) + \
