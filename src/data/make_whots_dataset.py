@@ -3,7 +3,7 @@ import roman
 import sys
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
-from data.whots_parse import get_args
+from whots_parse import get_args
 
 
 class DefineWhotsSystem:
